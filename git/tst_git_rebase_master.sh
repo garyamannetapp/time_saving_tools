@@ -5,7 +5,7 @@ set skipPush [lindex $argv 1];
 if {[llength $argv] == 0} {
   puts stderr "Usage: $argv0 file"
   puts "Some or all of the parameters are empty";
-  puts "Usage: $argv0 \"your branch name\"" "skip push"
+  puts "Usage: $argv0 <your branch name> <skippush>"
   exit 1
 }
 

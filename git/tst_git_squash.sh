@@ -1,5 +1,13 @@
 #!/usr/bin/env expect
 
+set skipPush [lindex $argv 1];
+if {[llength $argv] == 0} {
+  puts stderr "Usage: $argv0 file"
+  puts "Some or all of the parameters are empty";
+  puts "Usage: $argv0 <skippush>"
+  exit 1
+}
+
 spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/
 interact
 
@@ -18,7 +26,9 @@ expect "# This is a"
 send "6j3dd:wq\r"
 expect eof
 
-spawn git push -f
-interact
+if {[llength $skipPush] == 0} {
+    spawn git push -f
+    interact
+}
 
 puts "Congratulations!! You have saved 20s"
