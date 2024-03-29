@@ -8,10 +8,10 @@ if {[llength $argv] == 0} {
   exit 1
 }
 
-spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/
+spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/ predefined-models/
 interact
 
-spawn git commit -S --allow-empty -m "test" 
+spawn git commit -S -m "test"
 interact
 
 spawn git rebase -i HEAD~2
