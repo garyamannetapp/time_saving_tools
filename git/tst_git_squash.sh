@@ -4,7 +4,7 @@ set skipPush [lindex $argv 1];
 if {[llength $argv] == 0} {
   puts stderr "Usage: $argv0 file"
   puts "Some or all of the parameters are empty";
-  puts "Usage: $argv0 <skippush>"
+  puts "Usage: $argv0 <yes to force push, no for not for push>"
   exit 1
 }
 
@@ -26,7 +26,7 @@ expect "# This is a"
 send "6j3dd:wq\r"
 expect eof
 
-if {[llength $skipPush] == 0} {
+if {[regexp -nocase "yes" $skipPush] == 0} {
     spawn git push -f
     interact
 }
