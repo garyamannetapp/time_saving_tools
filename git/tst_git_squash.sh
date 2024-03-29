@@ -1,6 +1,6 @@
 #!/usr/bin/env expect
 
-set skipPush [lindex $argv 1];
+set forcePush [lindex $argv 1];
 if {[llength $argv] == 0} {
   puts stderr "Usage: $argv0 file"
   puts "Some or all of the parameters are empty";
@@ -26,7 +26,8 @@ expect "# This is a"
 send "6j3dd:wq\r"
 expect eof
 
-if {[regexp -nocase "yes" $skipPush] == 0} {
+puts "force push $forcePush"
+if {[string match "*yes*" $forcePush]} {
     spawn git push -f
     interact
 }
