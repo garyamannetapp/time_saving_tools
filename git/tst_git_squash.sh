@@ -1,6 +1,6 @@
 #!/usr/bin/env expect
 
-set forcePush [lindex $argv 1];
+set forcePush [lindex $argv 0];
 if {[llength $argv] == 0} {
   puts stderr "Usage: $argv0 file"
   puts "Some or all of the parameters are empty";
