@@ -9,7 +9,7 @@ if {[llength $argv] == 0} {
   exit 1
 }
 
-spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/ app/utils/
+spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/ app/utils/ app/api/  app/model/
 interact
 
 spawn git commit -S -m $commitMessage
