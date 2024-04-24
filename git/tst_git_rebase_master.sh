@@ -26,7 +26,8 @@ send ":wq\r"
  #   "# Rebase" { send ":wq\r"}
 #    timeout {puts "timeout happened"}
 #    eof {puts "eof received"}
-#} 
+#}
+interact
 puts "force push $forcePush"
 if {[string match "*yes*" $forcePush]} {
     spawn git push -f

@@ -8,7 +8,7 @@ if {[llength $argv] == 0} {
   exit 1
 }
 
-spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/ predefined-models/ app/utils/
+spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/ predefined-models/ app/utils/  app/pkg/switches app/model/  app/api/
 interact
 
 spawn git commit -S -m "test"
