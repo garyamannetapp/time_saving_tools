@@ -1,15 +1,23 @@
 #!/usr/bin/env expect
 
-set forcePush [lindex $argv 0];
-if {[llength $argv] == 0} {
+set componentName [lindex $argv 0];
+set forcePush [lindex $argv 1];
+
+if {[llength $argv] != 2} {
   puts stderr "Usage: $argv0 file"
   puts "Some or all of the parameters are empty";
-  puts "Usage: $argv0 <yes to force push, no for not for push>"
+  puts "Usage: $argv0 <component name e.g cvs/cvn> <yes to force push, no for not for push>"
   exit 1
 }
 
-spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/ predefined-models/ app/utils/  app/pkg/switches app/model/  app/api/
+#spawn git add app/database app/orchestration app/pkg/cvi app/pkg/sdk app/pkg/serviceproviders app/api/server/ predefined-models/ app/utils/  app/pkg/switches app/model/  app/api/
+spawn git add .
 interact
+
+if {[string match "*cvn*" $componentName]} {
+    spwan git restore --staged build-tools
+    interact
+}
 
 spawn git commit -S -m "test"
 interact

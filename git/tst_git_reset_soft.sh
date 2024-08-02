@@ -5,7 +5,7 @@ set count [lindex $argv 0];
 set commitMessage [lindex $argv 1];
 
 
-if {[llength $argv] == 0} {
+if {[llength $argv] != 2} {
   puts stderr "Usage: $argv0 file"
   puts "Some or all of the parameters are empty";
   puts "Usage: $argv0 <number of commits> <your commit message>"
